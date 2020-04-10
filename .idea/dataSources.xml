@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="SEWordSim-r1" uuid="1cc8b74a-a9fd-4069-812d-00c0de2bc590">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\Thai Flowers\Downloads\gitter_classifier\SEWordSim-r1.db</jdbc-url>
+    </data-source>
+  </component>
+</project>
