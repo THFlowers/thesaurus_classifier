@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import copy
 import json
 import sys
 
@@ -94,7 +94,7 @@ class TFidF(object):
 # Possible concern, examples are stemmed so should I stem the input here?
 # Answer: Data in SEWordSim DB is stemmed, so yes
 # Now what about word2vec?
-def classify(tf_idf, message, sim_func=None, num_similar=1, min_similarity=0.3, stemmed_database=True):
+def classify(tf_idf, message, sim_func=None, num_similar=1, min_similarity=0.3, stemmed_database=True, segment=True):
     assert(num_similar >= 0)
     assert(0.0 <= min_similarity <= 100.0)
 
@@ -102,12 +102,14 @@ def classify(tf_idf, message, sim_func=None, num_similar=1, min_similarity=0.3, 
     words = word_tokenize(message.lower().strip())
 
     segmented_words = []
-    for wd in words:  # example 'artstation' --> ['art', 'station']
-        segmented_words.append(wd)
-        segments = wordsegment.segment(wd)
-        if len(segments) > 1:
-           segmented_words.extend(segments)
-
+    if segment:
+        for wd in words:  # example 'artstation' --> ['art', 'station']
+            segmented_words.append(wd)
+            segments = wordsegment.segment(wd)
+            if len(segments) > 1:
+                segmented_words.extend(segments)
+    else:
+        segmented_words = copy.deepcopy(words)
     del words
 
     # NOTE: 2/19/20, discovered typo, was message, not words (now segmented_words), 1% filter hit 46% match rate
