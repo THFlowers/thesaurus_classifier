@@ -1,4 +1,4 @@
-# thesaurus_classifier
+# Thesaurus Classifier
 Experiment making a simple tf-idf based classifier augmented by a thesaurus (semantic resource)
 
 Experiment conducted and report written as part of requirements for Masters degree in Computer Science (project track) from Florida State University
@@ -11,16 +11,38 @@ To run the experiments you will need the following libraries installed either on
 * nltk 3.4.5
 * gensim 3.8.1
 
-You will also need to download the archieves in the following drive folder and place them in your project directory:
+You will also need to download the archives in the following drive folder and place them in your project directory:
 
 * https://drive.google.com/open?id=1Z1WYt29MKuPAbOqLLbJ9cNk5sq5x2SAT
 
-# How to run the scripts
+## Before running the scripts
+* Install the required libraries
+* Download the semantic resources
+* Run the following from a python shell in the project directory to download NLTK datasets:
 
-classify_test.py takes no parameters, edit the code to select desired semantic resource and experiment scan range for each parameter via the various for loops, then run it.
+> import nltk  
+> nltk.download('stopwords')  
+> nltk.download('punkt')  
+
+## How to run the scripts
+
+### classify_test.py
+
+Must be provided training data in a compatible CSV format, a semantic resource option, and True/False to enable segmentation. 
+> ./classify_test.py labeledData.csv [Raw | WordSimSEDB | Word2VecSE] [True | False]
+
+### make_model.py
+
+Performs the “training” steps only using labeledData.csv. Outputs term_frequencies.json and doc_frequencies.json.
+
+> ./make_model labeledData.csv
+
+### classify.py
+
+Performs a raw tf-idf classification using the above json files on a plain text file.
+
+> ./classify term_frequencies.json doc_frequencies.json message.txt
 
 # TODO
-* Write short guide on running the other scripts
 * Find better hosting solution
-* Include finished report
 * Project goals and results summary on this page
