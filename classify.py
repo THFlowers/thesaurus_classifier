@@ -175,7 +175,7 @@ def classify(tf_idf, message, sim_func=None, num_similar=1, min_similarity=0.3, 
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("Usage: ./categorize term_frequencies.json doc_frequencies.json message.txt")
+        print("Usage: ./classify term_frequencies.json doc_frequencies.json message.txt")
         exit(1)
 
     wordsegment.load()

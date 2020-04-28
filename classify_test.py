@@ -62,7 +62,7 @@ valid_models = {'WordSimSEDB': (load_sim_db, True),
 
 if __name__ == "__main__":
     if len(sys.argv) != 4 or sys.argv[2] not in valid_models.keys() or sys.argv[3] not in ['True', 'False']:
-        print('Usage: ./categorize labeledData.csv [Raw | WordSimSEDB | Word2VecSE] [True | False]')
+        print('Usage: ./classify_test labeledData.csv [Raw | WordSimSEDB | Word2VecSE] [True | False]')
         exit(1)
 
     # Segmentation data must always be loaded, as make_model depends upon it

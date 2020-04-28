@@ -67,7 +67,6 @@ def generate_frequencies(labeled_data,  filter_threshold=0.03):
         # NOTE: 2/27/20 -- Found forgot to call lower here
         message = doc["message"].lower().strip()
         message = word_tokenize(message)
-        # message = set(message).difference(stop_words)
 
         segmented_message = []
         for wd in message:
@@ -114,10 +113,11 @@ if __name__ == "__main__":
         print("Usage: ./make_model labeledData.csv")
         exit(1)
 
+    # Need to load here so that library calls above work correctly
     wordsegment.load()
 
     with open(sys.argv[1]) as csv_file:
-        (term_frequencies, doc_frequencies) = generate_frequencies(csv.DictReader(csv_file, delimiter=','))
+        term_frequencies, doc_frequencies = generate_frequencies(csv.DictReader(csv_file, delimiter=','))
 
     with open("term_frequencies.json", 'w') as fi:
         json.dump(term_frequencies, fi, indent=4, sort_keys=True)
