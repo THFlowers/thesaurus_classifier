@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
         (term_frequencies, doc_frequencies) = generate_frequencies(labeled_data,
                                                                    filter_threshold=(filter_threshold * 0.0001))
-        my_idF = TFidF(term_frequencies, doc_frequencies)
+        my_idf = TFidF(term_frequencies, doc_frequencies)
 
     # Here put loops that don't depend on regenerating model
     # for num_similar in range(1, 2):
@@ -122,7 +122,7 @@ if __name__ == "__main__":
                     expected_cat = doc["Category"].lower()  # some of the labels are inconsistent in case
                     new_message = doc["message"].lower()
 
-                    category = classify(my_idF,
+                    category = classify(my_idf,
                                         new_message,
                                         sim_func=my_sim_func,
                                         num_similar=num_similar,
