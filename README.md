@@ -43,6 +43,13 @@ Performs a raw tf-idf classification using the above json files on a plain text 
 
 > ./classify term_frequencies.json doc_frequencies.json message.txt
 
+### classify_gui.py
+
+Tkinter based gui equivalent to classify.py.  Must run in project directory.
+Can load term/doc frequency files generated from make_model, or generate from scratch.
+WordSimDB doesn't work (due to SQLite3 and threading incompatibilities),
+but Raw and Word2VecSE options can be used.
+
 # TODO
 * Find better hosting solution
 * Project goals and results summary on this page
